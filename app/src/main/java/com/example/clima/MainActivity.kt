@@ -19,8 +19,9 @@ class MainActivity : AppCompatActivity() {
     private val pinturaList = mutableListOf<Pintura>()
 
     data class Pintura(
+
+        val obra: String,
         val genero: String,
-        val weatherType: String,
         val autor: String,
         val annio: String,
         val descripcion: String,
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         llenarGaleria()
 
         // Set onClick listeners for each button
-        btAlajuela.setOnClickListener { buscarPinturas("Alajuela") }
+        btAlajuela.setOnClickListener { buscarPinturas("Surrealismo") }
         btRomanticismo.setOnClickListener { buscarPinturas("Romanticismo") }
         btRenacentismo.setOnClickListener { buscarPinturas("Renacentismo") }
         btPaisajismo.setOnClickListener { buscarPinturas("Paisajismo") }
@@ -52,8 +53,8 @@ class MainActivity : AppCompatActivity() {
         pinturaList.apply {
             add(
                 Pintura(
-                    genero = "Alajuela",
-                    weatherType = "Soleado",
+                    obra ="La llave del campo",
+                    genero = "Surrealismo",
                     autor = "Rene Magritte",
                     annio = "1936",
                     descripcion = "Este óleo de pequeño tamaño nos interroga sobre la realidad y sus posibilidades. Una ventana abierta al campo nos refleja un pequeño bosquete, el mismo que adivinamos en los cristales rotos. En este caso, la pregunta es la que sigue: ¿dónde está la realidad? ¿Detrás de la ventana? ¿O acaso esta es el reflejo de los cristales rotos?",
@@ -62,48 +63,48 @@ class MainActivity : AppCompatActivity() {
             )
             add(
                 Pintura(
-                    genero = "Alajuela",
-                    weatherType = "Nublado",
-                    autor = "25°C",
-                    annio = "80%",
-                    descripcion = "Cielo nublado",
-                    nomImagen = "nublado"
+                    obra ="La persistencia de la memoria",
+                    genero = "Surrealismo",
+                    autor = "Salvador Dali",
+                    annio = "1931",
+                    descripcion = "Dalí (con graves problemas de autoestima e, incluso, mentales recordemos) nos presenta un fondo onírico a más no poder con relojes que se derriten y no pueden mantenerse en pie. Sin duda, es una metáfora de la inmaterialidad e inconsistencia del tiempo.",
+                    nomImagen = "lapersistenciadelamemoria"
                 )
             )
             add(
                 Pintura(
-                    genero = "Cartago",
-                    weatherType = "Lluvioso",
-                    autor = "22°C",
-                    annio = "90%",
-                    descripcion = "Lluvias intensas",
-                    nomImagen = "lluvioso"
-                )
-            )
-            add(
-                Pintura(
-                    genero = "Guanacaste",
-                    weatherType = "Soleado",
-                    autor = "32°C",
-                    annio = "65%",
-                    descripcion = "Día caluroso",
-                    nomImagen = "soleado"
-                )
-            )
-            add(
-                Pintura(
-                    genero = "Holanda",
-                    weatherType = "Nevado",
-                    autor = "-5°C",
-                    annio = "80%",
-                    descripcion = "Día nevado",
-                    nomImagen = "nevado"
-                )
-            )
-            add(
-                Pintura(
+                    obra ="El beso",
                     genero = "Romanticismo",
-                    weatherType = "Despejado",
+                    autor = "Francesco Hayez",
+                    annio = "1859",
+                    descripcion = "Si bien a primera vista parece la personificación de la pasión juvenil a través de dos amantes entrelazados en un beso apasionado, la profundidad de esta sugerente obra va mucho más allá, ya que está cargada de símbolos alegóricos que representan la unidad nacional, el patriotismo y el compromiso político y militar.",
+                    nomImagen = "elbeso"
+                )
+            )
+            add(
+                Pintura(
+                    obra ="Mona Lisa",
+                    genero = "Renacentismo",
+                    autor = "Leonardo Da Vinci",
+                    annio = "1503",
+                    descripcion = "Conocido por los locales como La Gioconda (“la feliz”), este juego de palabras jovial proviene del apellido de Mona LisaEl comisario de Francesco del Giocondo. Hasta hace poco, la identidad de la mujer en la pintura era un misterio, pero desde entonces se ha confirmado como una retrato de la mujer noble italiana Lisa Gherardini, esposa de Giocondo.",
+                    nomImagen = "monalisa"
+                )
+            )
+            add(
+                Pintura(
+                    obra ="La Vista de Toledo",
+                    genero = "Paisajismo",
+                    autor = "El Greco",
+                    annio = "1599",
+                    descripcion = "El cuadro adopta un punto de vista bajo y se toma algunas libertades, ya que algunos edificios de Toledo están representados en posiciones diferentes a las de su verdadera ubicación. A la izquierda se ve el castillo de San Servando y —debajo de él— una estructura inacabada, con minúsculas figuras humanas, que tal vez sea un convento con iglesia y claustro.",
+                    nomImagen = "vistatoledo"
+                )
+            )
+            add(
+                Pintura(
+                    obra ="La Vista de Toledo",
+                    genero = "Romanticismo",
                     autor = "William Turner",
                     annio = "1844",
                     descripcion = "Pintura representativa del romanticismo.",
@@ -112,8 +113,8 @@ class MainActivity : AppCompatActivity() {
             )
             add(
                 Pintura(
+                    obra ="La Vista de Toledo",
                     genero = "Renacentismo",
-                    weatherType = "Claro",
                     autor = "Leonardo da Vinci",
                     annio = "1503",
                     descripcion = "Una obra maestra del Renacimiento.",
@@ -122,8 +123,8 @@ class MainActivity : AppCompatActivity() {
             )
             add(
                 Pintura(
+                    obra ="La Vista de Toledo",
                     genero = "Paisajismo",
-                    weatherType = "Soleado",
                     autor = "Claude Monet",
                     annio = "1899",
                     descripcion = "Pintura de paisaje impresionista.",
@@ -154,11 +155,13 @@ class MainActivity : AppCompatActivity() {
     private fun addPinturaView(pintura: Pintura) {
         val view = layoutInflater.inflate(R.layout.pintura_item, resultsLayout, false)
 
+        val tvObra = view.findViewById<TextView>(R.id.tvObra)
         val tvAutor = view.findViewById<TextView>(R.id.tvAutor)
         val tvAnnio = view.findViewById<TextView>(R.id.tvAnnio)
         val tvDescripcion = view.findViewById<TextView>(R.id.tvDescripcion)
         val imgTiempo = view.findViewById<ImageView>(R.id.imgTiempo)
 
+        tvObra.text = "Obra: ${pintura.obra}"
         tvAutor.text = "Autor: ${pintura.autor}"
         tvAnnio.text = "Año: ${pintura.annio}"
         tvDescripcion.text = "Descripción: ${pintura.descripcion}"
