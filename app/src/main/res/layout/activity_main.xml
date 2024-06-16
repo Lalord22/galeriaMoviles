@@ -15,30 +15,56 @@
         android:padding="16dp"
         tools:context=".MainActivity">
 
+        <!-- First row of buttons -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="66dp"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/edNomCiudad"
-                android:layout_width="0dp"
-                android:layout_height="54dp"
-                android:layout_weight="1"
-                android:hint="Ingrese el genero de la obra"
-                android:padding="8dp" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp"
+            android:gravity="center">
 
             <Button
-                android:id="@+id/btBuscar"
-                android:layout_width="wrap_content"
+                android:id="@+id/btAlajuela"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Enviar" />
+                android:layout_weight="1"
+                android:text="Alajuela" />
 
+            <Button
+                android:id="@+id/btRomanticismo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Romanticismo" />
+        </LinearLayout>
+
+        <!-- Second row of buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btRenacentismo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Renacentismo" />
+
+            <Button
+                android:id="@+id/btPaisajismo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Paisajismo" />
         </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:paddingTop="16dp">
 
             <LinearLayout

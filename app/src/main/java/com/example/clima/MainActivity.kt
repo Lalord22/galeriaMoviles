@@ -1,9 +1,7 @@
 package com.example.clima
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -12,8 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
     // Declarar variables para las vistas
-    private lateinit var edCiudad: EditText
-    private lateinit var btBuscar: Button
+    private lateinit var btAlajuela: Button
+    private lateinit var btRomanticismo: Button
+    private lateinit var btRenacentismo: Button
+    private lateinit var btPaisajismo: Button
     private lateinit var resultsLayout: LinearLayout
 
     private val pinturaList = mutableListOf<Pintura>()
@@ -32,17 +32,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Inicializar vistas
-        edCiudad = findViewById(R.id.edNomCiudad)
-        btBuscar = findViewById(R.id.btBuscar)
+        btAlajuela = findViewById(R.id.btAlajuela)
+        btRomanticismo = findViewById(R.id.btRomanticismo)
+        btRenacentismo = findViewById(R.id.btRenacentismo)
+        btPaisajismo = findViewById(R.id.btPaisajismo)
         resultsLayout = findViewById(R.id.resultsLayout)
 
         // Rellenar la lista con datos de prueba
         llenarGaleria()
 
-        btBuscar.setOnClickListener {
-            val generoInput = edCiudad.text.toString()
-            buscarPinturas(generoInput)
-        }
+        // Set onClick listeners for each button
+        btAlajuela.setOnClickListener { buscarPinturas("Alajuela") }
+        btRomanticismo.setOnClickListener { buscarPinturas("Romanticismo") }
+        btRenacentismo.setOnClickListener { buscarPinturas("Renacentismo") }
+        btPaisajismo.setOnClickListener { buscarPinturas("Paisajismo") }
     }
 
     private fun llenarGaleria() {
@@ -61,10 +64,10 @@ class MainActivity : AppCompatActivity() {
                 Pintura(
                     genero = "Alajuela",
                     weatherType = "Nublado",
-                    autor = "Salvador Dali",
-                    annio = "1931",
-                    descripcion = "Dalí (con graves problemas de autoestima e, incluso, mentales recordemos) nos presenta un fondo onírico a más no poder con relojes que se derriten y no pueden mantenerse en pie. Sin duda, es una metáfora de la inmaterialidad e inconsistencia del tiempo.",
-                    nomImagen = "lapersistenciadelamemoria"
+                    autor = "25°C",
+                    annio = "80%",
+                    descripcion = "Cielo nublado",
+                    nomImagen = "nublado"
                 )
             )
             add(
@@ -97,7 +100,36 @@ class MainActivity : AppCompatActivity() {
                     nomImagen = "nevado"
                 )
             )
-            // Agregar más objetos aquí
+            add(
+                Pintura(
+                    genero = "Romanticismo",
+                    weatherType = "Despejado",
+                    autor = "William Turner",
+                    annio = "1844",
+                    descripcion = "Pintura representativa del romanticismo.",
+                    nomImagen = "romanticismo"
+                )
+            )
+            add(
+                Pintura(
+                    genero = "Renacentismo",
+                    weatherType = "Claro",
+                    autor = "Leonardo da Vinci",
+                    annio = "1503",
+                    descripcion = "Una obra maestra del Renacimiento.",
+                    nomImagen = "renacentismo"
+                )
+            )
+            add(
+                Pintura(
+                    genero = "Paisajismo",
+                    weatherType = "Soleado",
+                    autor = "Claude Monet",
+                    annio = "1899",
+                    descripcion = "Pintura de paisaje impresionista.",
+                    nomImagen = "paisajismo"
+                )
+            )
         }
     }
 
