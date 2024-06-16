@@ -26,7 +26,7 @@
                 android:layout_width="0dp"
                 android:layout_height="54dp"
                 android:layout_weight="1"
-                android:hint="Ingrese el nombre de la ciudad"
+                android:hint="Ingrese el genero de la obra"
                 android:padding="8dp" />
 
             <Button
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
-            android:text="Temperatura: "
+            android:text="Autor: "
             android:textSize="18sp" />
 
         <TextView
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
-            android:text="Humedad:"
+            android:text="Año:"
             android:textSize="18sp" />
 
         <TextView

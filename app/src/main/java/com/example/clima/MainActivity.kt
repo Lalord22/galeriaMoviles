@@ -17,13 +17,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvHumedad: TextView
     private lateinit var tvDescripcion: TextView
 
-    private val climaList = mutableListOf<Clima>()
+    private val pinturaList = mutableListOf<Pintura>()
 
-    data class Clima(
-        val nomCiudad: String,
+    data class Pintura(
+        val genero: String,
         val weatherType: String,
-        val temperatura: String,
-        val humedad: String,
+        val autor: String,
+        val annio: String,
         val descripcion: String,
         val nomImagen: String
     )
@@ -41,13 +41,13 @@ class MainActivity : AppCompatActivity() {
         tvDescripcion = findViewById(R.id.tvDescripcion)
 
         // Rellenar la lista con datos de prueba
-        llenarDatosCiudad()
+        llenarGaleria()
 
         btBuscar.setOnClickListener {
-            val nomCiudad = edCiudad.text.toString()
+            val generoInput = edCiudad.text.toString()
 
             // Obtener los datos del clima actual de la lista
-            val tiempoCiudad = climaList.find { it.nomCiudad == nomCiudad }
+            val tiempoCiudad = pinturaList.find { it.genero == generoInput }
             if (tiempoCiudad != null) {
                 updateUI(tiempoCiudad)
             } else {
@@ -60,54 +60,54 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun llenarDatosCiudad() {
-        climaList.apply {
+    private fun llenarGaleria() {
+        pinturaList.apply {
             add(
-                Clima(
-                    nomCiudad = "San José",
+                Pintura(
+                    genero = "Alajuela",
                     weatherType = "Soleado",
-                    temperatura = "28°C",
-                    humedad = "75%",
-                    descripcion = "Cielo despejado",
-                    nomImagen = "soleado"
+                    autor = "Rene Magritte",
+                    annio = "1936",
+                    descripcion = "Este óleo de pequeño tamaño nos interroga sobre la realidad y sus posibilidades. Una ventana abierta al campo nos refleja un pequeño bosquete, el mismo que adivinamos en los cristales rotos. En este caso, la pregunta es la que sigue: ¿dónde está la realidad? ¿Detrás de la ventana? ¿O acaso esta es el reflejo de los cristales rotos?",
+                    nomImagen = "lallavedelcampo"
                 )
             )
             add(
-                Clima(
-                    nomCiudad = "Alajuela",
+                Pintura(
+                    genero = "Alajuela",
                     weatherType = "Nublado",
-                    temperatura = "25°C",
-                    humedad = "80%",
+                    autor = "25°C",
+                    annio = "80%",
                     descripcion = "Cielo nublado",
                     nomImagen = "nublado"
                 )
             )
             add(
-                Clima(
-                    nomCiudad = "Cartago",
+                Pintura(
+                    genero = "Cartago",
                     weatherType = "Lluvioso",
-                    temperatura = "22°C",
-                    humedad = "90%",
+                    autor = "22°C",
+                    annio = "90%",
                     descripcion = "Lluvias intensas",
                     nomImagen = "lluvioso"
                 )
             )
             add(
-                Clima(
-                    nomCiudad = "Guanacaste",
+                Pintura(
+                    genero = "Guanacaste",
                     weatherType = "Soleado",
-                    temperatura = "32°C",
-                    humedad = "65%",
+                    autor = "32°C",
+                    annio = "65%",
                     descripcion = "Día caluroso",
                     nomImagen = "soleado"
                 )
             )
             add(
-                Clima(
-                    nomCiudad = "Holanda",
+                Pintura(
+                    genero = "Holanda",
                     weatherType = "Nevado",
-                    temperatura = "-5°C",
-                    humedad = "80%",
+                    autor = "-5°C",
+                    annio = "80%",
                     descripcion = "Día nevado",
                     nomImagen = "nevado"
                 )
@@ -117,12 +117,12 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun updateUI(clima: Clima) {
-        tvTemperatura.text = "Temperatura: ${clima.temperatura}"
-        tvHumedad.text = "Humedad: ${clima.humedad}"
-        tvDescripcion.text = "Descripción: ${clima.descripcion}"
+    private fun updateUI(pintura: Pintura) {
+        tvTemperatura.text = "Autor: ${pintura.autor}"
+        tvHumedad.text = "Año: ${pintura.annio}"
+        tvDescripcion.text = "Descripción: ${pintura.descripcion}"
 
-        val resourceId = resources.getIdentifier(clima.nomImagen, "drawable", packageName)
+        val resourceId = resources.getIdentifier(pintura.nomImagen, "drawable", packageName)
         imgTiempo.setImageResource(resourceId)
     }
 }
