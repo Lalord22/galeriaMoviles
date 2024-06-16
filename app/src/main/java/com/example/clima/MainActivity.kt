@@ -61,10 +61,10 @@ class MainActivity : AppCompatActivity() {
                 Pintura(
                     genero = "Alajuela",
                     weatherType = "Nublado",
-                    autor = "25°C",
-                    annio = "80%",
-                    descripcion = "Cielo nublado",
-                    nomImagen = "nublado"
+                    autor = "Salvador Dali",
+                    annio = "1931",
+                    descripcion = "Dalí (con graves problemas de autoestima e, incluso, mentales recordemos) nos presenta un fondo onírico a más no poder con relojes que se derriten y no pueden mantenerse en pie. Sin duda, es una metáfora de la inmaterialidad e inconsistencia del tiempo.",
+                    nomImagen = "lapersistenciadelamemoria"
                 )
             )
             add(
