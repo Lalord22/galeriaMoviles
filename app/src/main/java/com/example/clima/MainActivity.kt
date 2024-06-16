@@ -1,9 +1,11 @@
 package com.example.clima
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -12,10 +14,7 @@ class MainActivity : AppCompatActivity() {
     // Declarar variables para las vistas
     private lateinit var edCiudad: EditText
     private lateinit var btBuscar: Button
-    private lateinit var imgTiempo: ImageView
-    private lateinit var tvTemperatura: TextView
-    private lateinit var tvHumedad: TextView
-    private lateinit var tvDescripcion: TextView
+    private lateinit var resultsLayout: LinearLayout
 
     private val pinturaList = mutableListOf<Pintura>()
 
@@ -35,29 +34,15 @@ class MainActivity : AppCompatActivity() {
         // Inicializar vistas
         edCiudad = findViewById(R.id.edNomCiudad)
         btBuscar = findViewById(R.id.btBuscar)
-        imgTiempo = findViewById(R.id.imgTiempo)
-        tvTemperatura = findViewById(R.id.tvTemperatura)
-        tvHumedad = findViewById(R.id.tvHumedad)
-        tvDescripcion = findViewById(R.id.tvDescripcion)
+        resultsLayout = findViewById(R.id.resultsLayout)
 
         // Rellenar la lista con datos de prueba
         llenarGaleria()
 
         btBuscar.setOnClickListener {
             val generoInput = edCiudad.text.toString()
-
-            // Obtener los datos del clima actual de la lista
-            val tiempoCiudad = pinturaList.find { it.genero == generoInput }
-            if (tiempoCiudad != null) {
-                updateUI(tiempoCiudad)
-            } else {
-                tvTemperatura.text = "Ciudad no encontrada"
-                tvHumedad.text = ""
-                tvDescripcion.text = ""
-                imgTiempo.setImageResource(0) // Limpia la imagen
-            }
+            buscarPinturas(generoInput)
         }
-
     }
 
     private fun llenarGaleria() {
@@ -116,13 +101,39 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun buscarPinturas(genero: String) {
+        resultsLayout.removeAllViews()
+        val matchingPinturas = pinturaList.filter { it.genero == genero }
 
-    private fun updateUI(pintura: Pintura) {
-        tvTemperatura.text = "Autor: ${pintura.autor}"
-        tvHumedad.text = "Año: ${pintura.annio}"
+        if (matchingPinturas.isNotEmpty()) {
+            matchingPinturas.forEach { pintura ->
+                addPinturaView(pintura)
+            }
+        } else {
+            val noResultTextView = TextView(this).apply {
+                text = "Género no encontrado"
+                textSize = 18f
+                setPadding(0, 10, 0, 10)
+            }
+            resultsLayout.addView(noResultTextView)
+        }
+    }
+
+    private fun addPinturaView(pintura: Pintura) {
+        val view = layoutInflater.inflate(R.layout.pintura_item, resultsLayout, false)
+
+        val tvAutor = view.findViewById<TextView>(R.id.tvAutor)
+        val tvAnnio = view.findViewById<TextView>(R.id.tvAnnio)
+        val tvDescripcion = view.findViewById<TextView>(R.id.tvDescripcion)
+        val imgTiempo = view.findViewById<ImageView>(R.id.imgTiempo)
+
+        tvAutor.text = "Autor: ${pintura.autor}"
+        tvAnnio.text = "Año: ${pintura.annio}"
         tvDescripcion.text = "Descripción: ${pintura.descripcion}"
 
         val resourceId = resources.getIdentifier(pintura.nomImagen, "drawable", packageName)
         imgTiempo.setImageResource(resourceId)
+
+        resultsLayout.addView(view)
     }
 }

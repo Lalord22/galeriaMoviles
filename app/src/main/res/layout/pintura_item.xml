@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/imgTiempo"
+        android:layout_width="203dp"
+        android:layout_height="204dp"
+        android:layout_gravity="center"
+        android:paddingTop="10dp"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/tvAutor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:text="Autor: "
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvAnnio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:text="Año:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDescripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:text="Descripción:"
+        android:textSize="18sp" />
+</LinearLayout>

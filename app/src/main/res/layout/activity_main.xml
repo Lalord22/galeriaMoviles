@@ -8,8 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -37,38 +36,18 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imgTiempo"
-            android:layout_width="203dp"
-            android:layout_height="204dp"
-            android:layout_gravity="center"
-            android:paddingTop="10dp"
-            android:scaleType="centerCrop" />
-
-
-        <TextView
-            android:id="@+id/tvTemperatura"
-            android:layout_width="wrap_content"
+        <ScrollView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:text="Autor: "
-            android:textSize="18sp" />
+            android:paddingTop="16dp">
 
-        <TextView
-            android:id="@+id/tvHumedad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:text="Año:"
-            android:textSize="18sp" />
+            <LinearLayout
+                android:id="@+id/resultsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
 
-        <TextView
-            android:id="@+id/tvDescripcion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:text="Descripción:"
-            android:textSize="18sp" />
+        </ScrollView>
 
     </LinearLayout>
 
