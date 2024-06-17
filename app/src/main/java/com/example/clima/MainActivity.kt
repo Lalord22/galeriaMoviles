@@ -103,32 +103,32 @@ class MainActivity : AppCompatActivity() {
             )
             add(
                 Pintura(
-                    obra ="La Vista de Toledo",
+                    obra ="The Fighting Temeraire",
                     genero = "Romanticismo",
                     autor = "William Turner",
-                    annio = "1844",
-                    descripcion = "Pintura representativa del romanticismo.",
-                    nomImagen = "romanticismo"
+                    annio = "1839",
+                    descripcion = "La composición de este cuadro es inusual: el objeto más significativo, el antiguo buque de guerra, no está en el centro del cuadro sino en el cuadrante inferior izquierdo, desde donde, con majestuoso esplendor, y caracterizado con una llamativa y escueta gama de colores casi espectrales, se eleva contra un triángulo de cielo azul y niebla ascendente que lo realza. El decadente esplendor de la vieja nave contrasta con el sucio remolcador que le precede y que, ennegrecido con su alta chimenea, agita a su paso la superficie del río.",
+                    nomImagen = "fightingtemeraire"
                 )
             )
             add(
                 Pintura(
-                    obra ="La Vista de Toledo",
+                    obra ="Juicio final",
                     genero = "Renacentismo",
-                    autor = "Leonardo da Vinci",
-                    annio = "1503",
-                    descripcion = "Una obra maestra del Renacimiento.",
-                    nomImagen = "renacentismo"
+                    autor = "Michelangelo",
+                    annio = "1541",
+                    descripcion = "En 1535, el papa Paulo III encargó a Miguel Ángel el más grande fresco jamás pintado, que trataría sobre el Juicio Final y que se ubicaría en la pared del altar de la Capilla Sixtina. El tema estaba relacionado con lo que había sucedido en la Iglesia en los años precedentes: la Reforma Protestante y el saqueo de Roma. Por eso se intentaba representar a la humanidad haciendo frente a su salvación.",
+                    nomImagen = "juiciofinal"
                 )
             )
             add(
                 Pintura(
-                    obra ="La Vista de Toledo",
+                    obra ="El estanque de los nenúfares",
                     genero = "Paisajismo",
                     autor = "Claude Monet",
                     annio = "1899",
-                    descripcion = "Pintura de paisaje impresionista.",
-                    nomImagen = "paisajismo"
+                    descripcion = "Los nenúfares (en francés, Les nymphéas) es una serie de pinturas al óleo que ejecutó el pintor impresionista Claude Monet (aproximadamente 250 obras) al final de su vida, sobre amplios paneles, como el de la ilustración, que mide 219 × 602 cm, y que actualmente se exhiben en el Museo de la Orangerie de las Tullerías, en París, Francia.",
+                    nomImagen = "estanque"
                 )
             )
         }
